@@ -1,0 +1,25 @@
+asyncapi: '2.0.0'
+info:
+  title: Flight Notifier Service
+  version: '1.0.0'
+  description: |
+    Recevies updates from a subscribed flight and notifies via Twilio API.
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  development:
+    url: mqtt://localhost:1883
+    protocol: mqtt
+channels:
+  flight/update:
+    description: |
+      Receives updates from a subscribed flight
+    subscribe:
+      summary: Inform about the status of a subscribed flight
+      message:
+        $ref: '#/components/messages/flightStatus'
+components:
+  messages:
+    flightStatus:
+      $ref: '../common/messages/flight_status.yaml'

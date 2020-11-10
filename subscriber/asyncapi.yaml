@@ -1,0 +1,25 @@
+asyncapi: '2.0.0'
+info:
+  title: Flight Subscriber Service
+  version: '1.0.0'
+  description: |
+     Allows users to subscribe events from a given flight
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  development:
+    url: mqtt://localhost:1883
+    protocol: mqtt
+channels:
+  flight/queue:
+    description: |
+      queue flight in order to retrieve status
+    publish:
+      summary: Inform about the status of a subscribed flight
+      message:
+        $ref: '#/components/messages/flightQueue'
+components:
+  messages:
+    flightQueue:
+      $ref: '../common/messages/flight_queue.yaml'

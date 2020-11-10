@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight Status Alert Service</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+  </head>
+  <body>
+    <div class="testbox">
+    <form action="/subscribe" method="post">
+      <div class="banner">
+        <h1>Flight Status Monitor</h1>
+      </div>
+      <br/>
+      <fieldset>
+        <legend>Passenger Information</legend>
+        <div class="columns">
+          <div class="item">
+            <label for="name">Name<span>*</span></label>
+            <input id="name" type="text" name="name" />
+          </div>
+         <div class="item">
+            <label for="phone">Phone<span>*</span></label>
+            <input id="phone" type="tel"   name="phone" />
+          </div>
+      </fieldset>
+      <br/>
+      <fieldset>
+      <legend>Flight Information</legend>
+      <div class="columns">
+      <div class="item">
+      <label for="departuredate">Departure Date <span>*</span></label>
+      <input id="departuredate" type="date" name="departuredate" />
+      <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="item" style=width:100%>
+      <label for="carrier">Carrier Code</label>
+      <input id="carrier" type="text" name="carrier" value="KL"/>
+      </div>
+      <div class="item" style=width:100%>
+      <label for="flightnumber">Flight Number</label>
+      <input id="flightnumber" type="text" name="flightnumber" value="1772" />
+      </div>
+ 
+     </div>
+     </fieldset>
+      <div class="btn-block">
+      <button type="submit" >Submit</button>
+      </div>
+    </form>
+    </div>
+  </body>
+</html>

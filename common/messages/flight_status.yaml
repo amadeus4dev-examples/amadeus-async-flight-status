@@ -1,0 +1,10 @@
+summary: Provides flight status on arrival and destination
+payload:
+  type: object
+  properties:
+    user:
+      $ref: '../schemas/user.yaml'
+    departure:
+      $ref: '../schemas/segment.yaml'
+    arrival:
+      $ref: '../schemas/segment.yaml'

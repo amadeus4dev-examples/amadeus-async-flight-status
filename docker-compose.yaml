@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  broker:
+    image: toke/mosquitto
+    ports:
+      - "1883:1883"
+    networks:
+      - my-network
+  monitor:
+    depends_on:
+      - broker
+    image: amadeus4dev/monitor-service
+    container_name: monitor-service
+    build:
+      context: .
+      dockerfile: monitor.dockerfile
+    networks:
+      - my-network
+    environment:
+      - AMADEUS_CLIENT_SECRET=${AMADEUS_CLIENT_SECRET}
+      - AMADEUS_CLIENT_ID=${AMADEUS_CLIENT_ID}
+
+  notifier:
+    depends_on:
+      - broker
+    image: amadeus4dev/notifier-service
+    container_name: notifier-service
+    build:
+      context: .
+      dockerfile: notifier.dockerfile
+    networks:
+      - my-network
+    environment:
+      - TWILIO_SID=${TWILIO_SID}
+      - TWILIO_TOKEN=${TWILIO_TOKEN}
+      - TWILIO_NUMBER=${TWILIO_NUMBER}
+ 
+  subscriber:
+    depends_on:
+      - broker
+    image: amadeus4dev/subscriber-service
+    container_name: subscriber-service
+    build:
+      context: .
+      dockerfile: subscriber.dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - my-network
+  
+networks:
+  my-network:
+    external: true
+
