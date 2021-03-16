@@ -15,7 +15,7 @@ channels:
   flight/update:
     description: |
       Receives updates from a subscribed flight
-    subscribe:
+    publish:
       summary: Inform about the status of a subscribed flight
       message:
         $ref: '#/components/messages/flightStatus'
