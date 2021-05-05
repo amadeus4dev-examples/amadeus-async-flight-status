@@ -16,7 +16,7 @@ channels:
     description: |
       queue flight in order to retrieve status
     subscribe:
-      summary: Inform about the status of a subscribed flight
+      summary: Receive information about the flight that should be monitored for changes
       message:
         $ref: '#/components/messages/flightQueue'
 components:
